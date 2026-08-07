@@ -1,19 +1,15 @@
 class Solution {
     public int smallestNumber(int n, int t) {
-        while (true) {
-            if (getDigitProduct(n) % t == 0) {
+         while(true) {
+            var s = Integer.toString(n, 10);
+            int p = 1;
+            for(int i = 0; i < s.length(); i++) {
+                p *= Integer.parseInt(""+s.charAt(i));
+            }
+            if(p % t == 0) {
                 return n;
             }
             n++;
-        }
-    }
-
-    private int getDigitProduct(int num) {
-        int product = 1;
-        while (num > 0) {
-            product *= num % 10;
-            num /= 10;
-        }
-        return product;
+         }
     }
 }
