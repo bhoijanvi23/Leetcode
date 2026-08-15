@@ -1,12 +1,12 @@
 class Solution {
     public int countKDifference(int[] nums, int k) {
-        int[] cnt = new int[101];
-        int ans = 0;
-        for (int x : nums) {
-            if (x - k >= 1) ans += cnt[x - k];
-            if (x + k <= 100) ans += cnt[x + k];
-            cnt[x]++;
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        for(int num:nums){
+            count+=map.getOrDefault(num-k,0);
+            count+=map.getOrDefault(num+k,0);
+            map.put(num,map.getOrDefault(num,0)+1);
         }
-        return ans;
+    return count;
     }
 }
